@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    div.table-div {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid red;
+      background-color: slateblue;
+      box-sizing: border-box;
+    }
+
+    table {
+      /* min-width:3rem; */
+      /* min-height:5rem; */
+      border-radius: 0.9rem;
+      background-color: darkcyan;
+      /* border-collapse: collapse;     */
+    }
+
+    .black {
+      background-color: rgb(73, 69, 69);
+      padding: 0.5rem;
+
+    }
+
+    .light {
+      background-color: rgb(134, 214, 214);
+    }
+
+    .btn-clr1 {
+      background-color: lightslategray;
+      color: rgb(135, 40, 175);
+    }
+
+    .btn-clr2 {
+      background-color: lightseagreen;
+      color: rgb(91, 82, 82);
+    }
+
+    table {
+      min-width: 30%;
+    }
+
+    table,
+    th,
+    td {
+
+      border-spacing: 0.9rem;
+      box-sizing: border-box;
+    }
+
+    td {
+
+      position: relative;
+      border: none;
+      /* padding: 0.2rem; */
+    }
+
+    input {
+      border-radius: 2rem;
+      position: relative;
+      min-width: 5rem;
+      min-height: 5rem;
+      border-color: rgba(0, 0, 0, 0.2);
+      font-weight: bold;
+      font-size: 1.3rem;
+      background-color: lightseagreen;
+      box-sizing: border-box;
+    }
+
+    input#Equation {
+      min-width: 100%;
+      text-align: left;
+      font-size: xx-large;
+      padding-left: 2rem;
+    }
+
+    #solve {
+      border-radius: 2rem;
+      min-width: 10rem;
+      min-height: 15rem;
+    }
+
+    #CL,
+    #DOT {
+      border-radius: 2rem;
+      min-width: 5rem;
+      min-height: 10rem;
+      font-weight: bold;
+    }
+  </style>
+
+<body>
+  <div id="wrapper">
+    <div class="table-div">
+
+      <table id="table-bg">
+        <tr>
+          <th colspan="6"><input type="text" id="Equation" placeholder="Calculator"></th>
+          <th><button type="button" id="button" class="black btn-clr1 btn-clr2">Dark / Light</button></th>
+        </tr>
+
+        <tr>
+          <td><input type="button" onclick="dis('+')" value="+"></td>
+          <td><input type="button" onclick="dis('-')" value="&minus;"></td>
+          <td><input type="button" onclick="dis('*')" value="X"></td>
+          <td><input type="button" onclick="dis('/')" value="/"></td>
+          <td><input type="button" onclick="squ()" value="x&sup2;"></td>
+          <td><input type="button" onclick="cub()" value="x&sup3;"></td>
+          <td><input type="button" onclick="dis('%')" value="%"></td>
+        </tr>
+
+        <tr>
+          <td><input type="button" onclick="dis('1')" value="1"></td>
+          <td><input type="button" onclick="dis('2')" value="2"></td>
+          <td><input type="button" onclick="dis('3')" value="3"></td>
+          <td><input type="button" onclick="dis('0')" value="0"></td>
+          <td><input type="button" onclick="clear1()" value="Cancel"> </td>
+          <td colspan="2" rowspan="3"><input type="button" id="solve" onclick="solve()" value="Enter"></td>
+        </tr>
+
+        <tr>
+          <td><input type="button" onclick="dis('4')" value="4"></td>
+          <td><input type="button" onclick="dis('5')" value="5"></td>
+          <td><input type="button" onclick="dis('6')" value="6"></td>
+          <td rowspan="2"><input type="button" id="CL" onclick="Clear()" value="Clear"></td>
+          <td rowspan="2"><input type="button" id="DOT" onclick="dis('.')" value="."></td>
+        </tr>
+        <tr>
+          <td><input type="button" onclick="dis('7')" value="7"></td>
+          <td><input type="button" onclick="dis('8')" value="8"></td>
+          <td><input type="button" onclick="dis('9')" value="9"></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    function dis(val) {
+      document.getElementById("Equation").value += val;
+    }
+
+    function Clear() {
+      document.getElementById("Equation").value = "";
+    }
+    function clear1() {
+      let str = document.getElementById("Equation").value;
+      //  console.log(str.substr(0, str.length - 1));
+      // let y = str.substr(0, str.length - 1);
+      let y = str.slice(0,-1);
+      document.getElementById("Equation").value = y;
+
+    }
+
+    function solve() {
+      let x = document.getElementById("Equation").value;
+
+      let y = eval(x);
+
+      document.getElementById("Equation").value = y;
+
+    }
+
+    function squ() {
+      let s = document.getElementById("Equation").value;
+
+      let t = eval(s * s);
+
+      document.getElementById("Equation").value = t;
+
+    }
+
+    function cub() {
+      let s = document.getElementById("Equation").value;
+
+      let t = eval(s * s * s);
+
+      document.getElementById("Equation").value = t;
+
+    }
+    /* function squ(x)
+    {
+        let s = document.getElementById("Equation").value;
+        return s*s;
+
+    // }*/
+
+    let table = document.getElementById("table-bg");
+    let input = document.querySelectorAll("input");
+    let button = document.getElementById("button");
+    button.onclick = function () {
+      if (table.className == "light") {
+        table.className = "black";
+        for (let i = 0; i < input.length; i++) {
+          input[i].className = "btn-clr1";
+        }
+      }
+      else {
+        table.className = "light";
+        for (let i = 0; i < input.length; i++) { input[i].className = "btn-clr2"; }
+      }
+    };
+
+  </script>
+</body>
+
+</html>

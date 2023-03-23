@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: cursive;
+            text-align: center;
+
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        div.stopwatch {
+            background-color: yellow;
+            width: 20rem;
+            height: 12rem;
+            border-radius: 1rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 0.6rem;
+
+        }
+
+        div#container1 span {
+            display: inline-block;
+            width: 2rem;
+            height: 2rem;
+            font-weight: bold;
+            font-size: 2.5rem;
+            /* background-color: red; */
+        }
+
+        div#container2 {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            align-items: center;
+        }
+
+        button {
+            display: block;
+            padding: 0.4rem 0.8rem;
+            font-weight: bold;
+            border-radius: 1rem;
+        }
+
+        button:active {
+            padding: 0.3rem 0.8rem;
+            filter: brightness(50%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="stopwatch">
+        <h2>Your time start's now.</h2>
+        <div id="container1">
+            <span id="hours">00</span>
+            <span> : </span>
+            <span id="mins">00</span>
+            <span> : </span>
+            <span id="sec">00</span>
+            <span> : </span>
+            <span id="millisec">00</span>
+        </div>
+
+        <div id="container2">
+            <button id="start">Start</button>
+            <button id="stop">Stop</button>
+            <button id="reset">Reset</button>
+        </div>
+    </div>
+    <div id="record">
+        <h1>Recorded values.</h1>
+    </div>
+
+    <script>
+
+
+        const start = document.getElementById('start');
+        const stop = document.getElementById('stop');
+        const reset = document.getElementById('reset');
+
+        let h = 0;
+        let m = 0;
+        let s = 0;
+        let ms = 0;
+
+        let timer = false;
+        var count = 0;
+
+        start.addEventListener('click', ()=> {
+            timer = true;
+            stopwatch();
+        });
+
+        stop.addEventListener('click', ()=> {
+            timer = false;
+
+         let rms =document.getElementById('millisec').innerHTML;  
+         let rsec =document.getElementById('sec').innerHTML;  
+         let rmin =document.getElementById('mins').innerHTML;  
+         let rhr =document.getElementById('hours').innerHTML;  
+         let record = document.createElement('h1');
+         record.innerHTML = `${rhr} : ${rmin} : ${rsec} : ${rms}`;
+
+         let recorddiv = document.getElementById('record');
+         recorddiv.appendChild(record);
+
+         if(document.getElementsByTagName('h1').length > 3){
+               let relem =recorddiv.firstElementChild.nextElementSibling;
+               console.log(relem);   
+            recorddiv.removeChild(relem);
+         }
+
+        });
+
+        reset.addEventListener('click', ()=> {
+            timer = false;
+         h = 0;
+         m = 0;
+         s = 0;
+         ms = 0;
+         document.getElementById('millisec').innerHTML="00";  
+          document.getElementById('sec').innerHTML="00";  
+          document.getElementById('mins').innerHTML="00";  
+          document.getElementById('hours').innerHTML="00"; 
+
+        });
+
+        function stopwatch() {
+            // it's sam as timer == true
+            if (timer) {   
+                count = count+1;
+                if (count == 100) {
+                    s = s + 1;
+                    count = 0;
+                }
+                if(s == 60){
+                    m = m + 1;
+                    s = 0;
+                }
+                if(m == 60){
+                    h = h + 1;
+                    m = 0;
+                    s = 0;
+                }
+             let hstring = h;
+             let mstring = m;
+             let sstring = s;
+             if(h<10){
+                hstring = "0" + hstring;
+             }
+             if(m<10){
+               mstring = "0" + mstring;
+             }
+             if(s<10){
+               sstring = "0" + sstring;   
+             }
+          
+          document.getElementById('millisec').innerHTML=count;  
+          document.getElementById('sec').innerHTML= sstring;  
+          document.getElementById('mins').innerHTML= mstring;  
+          document.getElementById('hours').innerHTML= hstring;  
+          setTimeout(()=>{stopwatch()},10)
+            }
+        }
+
+
+
+    </script>
+</body>
+
+</html>

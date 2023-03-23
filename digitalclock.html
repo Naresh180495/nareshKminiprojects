@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        body{
+            /* border:1px solid white; */
+            min-height:100vh;
+            background-color: #000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            
+        }
+        h1,h2#head{
+            color:white;
+            font-family: cursive;
+            font-size: 4rem;
+            /* border:1px solid white; */
+            /* text-align: ccenter; */
+        }
+        h1{
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body onload="clock()">
+    <h1>My Digital Clock</h1>
+    <h2 id="head"></h2>
+    <script>
+         let h2 = document.getElementById('head');
+     
+         function clock(){
+            let d = new Date();
+            let h = d.getHours();
+            let m = d.getMinutes();
+            let s = d.getSeconds();
+            let session = 'PM';
+            
+            h = h < 10? "0"+ h: h;
+            m = m < 10? "0"+ m: m;
+            s = s < 10? "0"+ s: s;
+            
+            if( h > 12 ){
+                h = h - 12;
+            }
+            if( h > 12 ){
+               session = 'AM' ;
+            }
+            h2.innerHTML = h + ' : ' + m + " : " + s + " " + session;
+
+            setTimeout(clock,1000)
+
+         }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script lang="javascript">           
+        let show = Number(prompt("Enter Your Percentage To Display Your Grade" , "Eg. 67,45,35,78,88,.etc "));
+                
+                if(show === 0)
+                {
+                    document.write(" Please enter valid credential ");
+                }
+                else if(show <= 34)
+                {
+                    document.write("Sorry You Are Failed Better Luck Next Time");
+                }
+                else if (show >= 101)
+                {
+                   document.write("INVALID ENTRIES !!! Join extra class you need some extra attention !!!!!");
+                }
+                else if (show >= 75)
+                    {
+                        document.write("You are Passed With Distinction");
+                    }
+                    else if(show >=60)
+                    {
+                        document.write("You are passed With 1St Class");
+                    }
+                    else if(show >=50)
+                    {
+                        document.write("You are passed With 2nd Class");
+                    }
+                    else if(show >=40)
+                    {
+                        document.write("You are passed With 3rd Class");
+                    }        
+                    else if(show >=35)
+                    {
+                        document.write("You are passed ");
+                    }
+                    else
+                    {
+                        document.write("Error")
+                    }        
+                </script>
+</body>
+</html>

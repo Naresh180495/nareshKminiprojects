@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: cursive;
+            /* font-size: 1.5rem; */
+            /*   text-transform:capitalize; */
+            min-height: 100vh;
+            display: flex;
+            gap: 1rem;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        label{
+            display:block;
+            text-align: center;
+        }
+
+        h1#result {
+            width:60%;
+            height:auto;
+            text-align: center;
+            font-size: 1rem;
+            /* align-self: flex-start; */
+        } 
+
+        input#fibo {
+            display: block;
+            margin: auto;
+            padding: 0.4rem 0.8rem;
+            border-radius: 0.6rem;
+            border: none;
+            background-color: rgba(255,255,255,0.2);
+            color:white;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        [type="button"] {
+            border: none;
+            padding: 0.4rem 0.8rem;
+            border-radius: 0.6rem;
+            font-weight: bold;
+        }
+
+        [type='button']:active {
+            background-color: #ff0;
+        }
+        
+    </style>
+</head>
+
+<body>
+   
+    <label for="fibo">
+        Please specify the limit of fibonacci series in number. <br><br>
+        <input type="text" id="fibo" placeholder="click here to type ....">
+    </label>
+    <input type="button" id="submit" value="submit">
+    <h1 id="result"></h1>
+
+<script>
+let result = document.getElementById('result');
+let btn = document.querySelector('#submit');
+
+btn.addEventListener('click',()=>{
+    let a = 0;
+    let b = 1;
+    let input = document.querySelector('#fibo');
+    
+    // result.innerHTML ="Your output is: <br>"+ a+"<br>"+b;
+    result.innerHTML ="Your output is: <br>"+ a+", "+b;
+    for(let i=2; i <= input.value-1; i++){
+      let c = a+b;
+    //   result.innerHTML += "<br>"+c;
+      result.innerHTML += ", "+c;
+      a = b;
+      b = c;
+    }  
+    input= input.value="";               
+})
+
+</script>
+</body>
+
+</html>

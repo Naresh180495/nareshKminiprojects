@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MY calculator</title>
+  <style>
+    *{
+        border:0;
+        margin:0;
+        box-sizing: border-box;
+    }
+    body{
+      height:100vh;
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      background-color: papayawhip;
+    }
+    table{
+        min-width:1rem;
+        box-shadow: 0px 0px 6px 6px rgba(0,0,0, 0.3);
+        /* margin: 0 auto; */
+        position:relative;
+        border-radius :1rem;
+        padding:0.6rem;
+        background-color: white;
+    }
+    
+    [type='button'], [type='text']{
+        padding :0.5rem;
+        position:relative;
+        Width:100%;
+        border-radius :1rem;
+        box-shadow: 0px 0px 6px rgba(0,0,0, 0.3);
+       
+    }
+    [type='text']{
+        background-color : darkgray;
+        border-radius:1rem;
+    }
+    td{
+        padding :0.2rem;
+    }
+    #CL,#DOT{
+      height:5rem;
+    }
+    tr{
+      padding:1rem;
+    }
+    </style>
+
+    </head>
+<body>
+    
+<table>
+
+<tr>
+
+<th colspan="6"><input type="text" id="Equation" placeholder="Calculator" ></th>
+
+</tr>
+
+
+
+<tr align="center">
+
+<td><input type="button" id="Add" onclick="dis('+')" value="+"></td>
+
+<td><input type="button" id="Sub" onclick="dis('-')" value="-"></td>
+
+<td><input type="button" id="Multi" onclick="dis('*')" value="*"></td>
+
+<td><input type="button" id="Division" onclick="dis('/')" value="/"></td>
+
+<td><input type="button" id="Mod" onclick="dis('%')" value="%"></td>
+
+</tr>
+
+ <tr align="center">
+
+ <td><input type="button" id="On" onclick = "dis('1')" value="1"></td>
+
+<td><input type="button" id="Tw" onclick="dis('2')" value="2"></td>
+
+<td><input type="button" id="Th" onclick="dis('3')" value="3"></td>
+
+ <td><input type="button" id="En"  value="Enter" onclick="solve()">
+
+<td><input type="button" id="Ze" onclick="dis('0')" value="0"></td>
+ </td>
+   </tr>
+
+
+
+<tr align="center">
+
+<td><input type="button" id="Fo" onclick="dis('4')" value="4"></td>
+
+<td><input type="button" id="Fi" onclick="dis('5')" value="5"></td>
+
+<td><input type="button" id="Si" onclick="dis('6')" value="6"></td>
+
+<td rowspan="2"><input type="button" id="CL" onclick="clear1()" value="Clear" style="width:auto ; height:70"></td>
+
+<td rowspan="2"><input type="button" id="DOT" onclick="dis('.')" value="." style="width:30 ; height:70"></td>
+
+                    
+
+</tr>
+<tr align="center">
+
+<td><input type="button" id="Se" onclick="dis('7')" value="7"></td>
+
+<td><input type="button" id="Ei" onclick="dis('8')" value="8"></td>
+
+<td><input type="button" id="Ni" onclick="dis('9')" value="9"></td>
+
+</tr>
+ </table>
+  
+
+ <script>
+
+    function dis(val){ 
+        document.getElementById("Equation").value += val;
+
+    }
+
+
+
+    function clear1(){
+         document.getElementById("Equation").value="";
+
+    }
+
+
+
+    function solve(){
+        
+  let x = document.getElementById("Equation").value;
+
+let y = eval(x);        document.getElementById("Equation").value = y;
+
+}
+
+</script>
+  </body>
+</html>

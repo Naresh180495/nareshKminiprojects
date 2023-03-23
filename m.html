@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+            font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+        body{
+            width:100%;
+            height:100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap:4rem;
+            align-items: center;
+            background-color:rgba(255,167,189,0.5);
+            
+        }
+        button{
+            
+            padding:0.4rem 1rem;
+            font-weight: bold;
+            color:green;
+            background-color: yellow;
+            border-radius: 0.6rem;
+            
+        }
+        section#alertcontainer{
+            /* border:1px solid red; */
+            width:18rem;
+            border-radius: 0.4rem 0.8rem;
+            /* text-align: center; */
+            padding:0.3rem 0.6rem;
+            background-color:blanchedalmond ;
+            /* opacity:0;  */
+           display: none;
+            position:absolute;
+        
+          
+        }
+        article{
+            /* border: 1px solid green; */
+            padding:0.3rem 0.6rem;
+
+        }
+         h1{
+            color:tomato;
+            text-decoration: underline;
+            text-align: center;
+        }
+        article p{
+            font-size:14px;
+           font-weight: bold;
+           color:coral;  
+           text-align: justify; 
+        }
+        article > p,h1{
+            margin-bottom: 0.4rem;
+            margin-top: 0.3rem;
+        }
+        button#btnclose{
+            width:100%;
+            text-transform: capitalize;
+            margin-bottom: 0.3rem;
+        }
+        button#fabtn{
+            float: right;
+            background-color: yellow;
+            color:green;
+        }
+    </style>
+</head>
+<body>
+ <h1>Modal Popup using HTML, CSS and javascript.</h1>
+        <button id="btn1">HTML</button>
+  
+
+    <section id="alertcontainer">
+        <button id="fabtn">
+         <i class="fa-solid fa-xmark"></i>
+        </button>
+        <article>
+            <h1>HTML5</h1>
+            <p>A hypertext markup language (HTML) is the primary language for developing web pages. HTML5 is a new version of HTML with new functionalities with markup language with Internet technologies. Language in HTML does not have support for video and audio. HTML5 supports both video and audio.</p>
+        </article>
+        <button id="btnclose">close</button>   
+    </section>
+
+    <script>
+        let btn1 = document.getElementById('btn1');
+        let btnclose = document.getElementById('btnclose');
+        let fabtn = document.getElementById('fabtn');
+        let menu = document.getElementById('alertcontainer');
+
+        btn1.addEventListener('click',()=>{
+               menu.style.display ='block';
+            //    menu.style.opacity ='1';
+       
+
+        });
+
+        btnclose.addEventListener('click',()=>{
+            menu.style.display ='none';
+            //    menu.style.opacity ='0';
+        })
+
+        fabtn.addEventListener('click',()=>{
+            menu.style.display ='none';
+            //    menu.style.opacity ='0';
+        })
+
+        
+    </script>
+</body>
+</html>

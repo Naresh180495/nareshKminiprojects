@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        body{
+            background-color: rgba(104,100,180,0.5);
+        }
+        section{
+            border:1px solid red;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        form{
+            padding:1rem;
+            width:20rem;
+            border-radius:0.4rem 0.8rem;
+            min-height: 6rem;
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            /* border:1px solid red; */
+            font-family: cursive;
+            font-weight: bold;
+            gap:1rem;
+            background-image:linear-gradient(to right,orange 0%,yellow 40%,lavender 70%);
+        }
+      
+    </style>
+</head>
+<body>
+    <section>
+       
+          <form>
+            <h1>Check your Age:</h1>
+            <label for="dob">
+                Your date-of-birth:
+                <br><input type="date" id="dob" required>
+            </label>
+            <label for="age">
+                Your age:
+                <br><input type="text" id="age" readonly>
+            </label>
+          </form>
+    </section>
+
+    <script>
+        let curdate = new Date();
+        console.log(curdate);
+
+        // let date1 = curdate.getDate();
+        // console.log(date1);
+        // let month1 = curdate.getMonth() + 1;
+        // console.log(month1);
+        let year1 = curdate.getFullYear();
+        console.log(year1);
+        let dob = document.getElementById('dob');
+        let age = document.getElementById('age');
+
+            dob.addEventListener('input',()=>{
+                let result =dob.value;
+                console.log(result);
+                // console.log(typeof(result));
+
+                let dobarr = result.split('-');
+                // console.log(dobarr);
+                let dobyear = Number(dobarr[0]);
+                // console.log(dobyear);
+                // console.log(typeof(dobyear));
+                // console.log(year1);
+                // console.log(typeof(year1));
+
+                let ageresult = year1 - dobyear;
+                age.value = ageresult;
+            })
+    </script>
+</body>
+</html>

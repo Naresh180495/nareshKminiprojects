@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         *{
+            /* margin:0;
+            padding:0;
+            box-sizing: border-box; */
+            font-family: cursive;
+            /* font-weight: bold; */
+        }
+    </style>
+</head>
+<body>
+    
+    <script lang="javascript">
+        let a = 0;
+        let b = 1;
+
+        limit = Number(prompt("Enter The Number You Want to End Up With"));
+         limit = limit - 1;
+        // console.log(limit);
+        document.write("<br>" + a);
+        document.write("<br>" + b);
+
+        for(let i = 2; i <= limit; i++)
+        {
+            let c = a + b;
+            document.write("<br>" + c);
+                a = b;
+                b = c;
+        }
+        </script>
+</body>
+</html>
